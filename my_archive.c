@@ -5,7 +5,7 @@
 ** Login   <timothe.duc@epitech.eu>
 **
 ** Started on  Fri Mar  3 21:31:12 2017 Timothe Duc
-** Last update Fri Mar  3 23:40:41 2017 Timothe Duc
+** Last update Sat Mar  4 02:19:41 2017 Timothe Duc
 */
 
 #include <unistd.h>
@@ -37,15 +37,16 @@ int main (int ac, char **av)
   {
     if ((file = fopen(av[i], "r")) == NULL)
     {
-      perror("Unable to open file");
+      write(2, "Unable to open file\n", 20);
       return (84);
     }
     else
     {
+      fprintf(archive, "%s\n", av[i]);
       while (fgets(bufer, 1024, file) != NULL)
         fprintf(archive, "%s", bufer);
     }
-    fprintf(archive, "%s", "\n*\n");
+    fprintf(archive, "%s", "*\n");
     i = i + 1;
     fclose(file);
   }
